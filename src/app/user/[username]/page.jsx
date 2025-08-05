@@ -12,7 +12,12 @@ export default async function Profile({ params }){
 
   return (<>
     <Navbar/>
-    <div className="px-60 py-10 flex gap-20">
+    <div className="
+      py-6 flex flex-col gap-8
+      lg:py-10
+      xl:gap-20
+      lg:flex-row
+    ">
       <ProfileCard user={user}/>
       <Links userId={user.id} />
     </div>

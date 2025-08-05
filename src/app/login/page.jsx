@@ -18,13 +18,16 @@ export default function Login(){
   }, [status, router]);
 
   return <div className="w-full h-screen flex justify-center items-center">
-    <main className="bg-neutral-900 border-2 border-neutral-800 p-10 rounded-xl">
+    <main className="
+      rounded-xl w-full flex flex-col justify-center
+      md:w-lg md:p-10 md:bg-neutral-900 md:border-2 md:border-neutral-800
+    ">
       <section className="flex flex-col gap-2">
-        <button onClick={()=> signIn("github")} className="flex justify-center items-center gap-3 text-xl text-white font-semibold h-14 w-sm border-2 border-neutral-700 rounded-md cursor-pointer hover:border-neutral-200 transition-colors">
+        <button onClick={()=> signIn("github")} className="flex justify-center items-center gap-3 text-xl text-white font-semibold h-14 border-2 border-neutral-700 rounded-md cursor-pointer hover:border-neutral-200 transition-colors">
           GitHub
           <GitHub/>
         </button>
-        <button onClick={()=> signIn("google")} className="flex justify-center items-center gap-3 text-xl text-white font-semibold h-14 w-sm border-2 border-neutral-700 rounded-md cursor-pointer hover:border-neutral-200 transition-colors">
+        <button onClick={()=> signIn("google")} className="flex justify-center items-center gap-3 text-xl text-white font-semibold h-14 border-2 border-neutral-700 rounded-md cursor-pointer hover:border-neutral-200 transition-colors">
           Google
           <Google/>
         </button>
@@ -37,8 +40,8 @@ export default function Login(){
       </div>
 
       <form className="flex flex-col gap-2">
-        <input type="email" placeholder="Email" className="h-14 w-sm text-white border-2 border-neutral-700 rounded-md px-6 font-semibold" />
-        <button className="h-14 w-sm bg-neutral-200 font-bold text-lg text-neutral-800 rounded-md cursor-pointer hover:bg-neutral-900 hover:border-2 hover:border-neutral-800 hover:text-white transition-colors">Login</button>
+        <input type="email" placeholder="Email" className="h-14 text-white border-2 border-neutral-700 rounded-md px-6 font-semibold" />
+        <button className="h-14 bg-neutral-200 font-bold text-lg text-neutral-800 rounded-md cursor-pointer hover:bg-neutral-900 hover:border-2 hover:border-neutral-700 hover:text-white transition-colors">Login</button>
       </form>
     </main>
   </div>;  

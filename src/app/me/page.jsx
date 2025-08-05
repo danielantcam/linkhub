@@ -66,16 +66,21 @@ export default function Me(){
     router.push(`/@${updatedSession?.user?.username}`);
   }
 
-  return <main className="flex items-center justify-center h-screen">
-    <form onSubmit={handleSubmit} className="bg-neutral-900 border-2 border-neutral-800 px-20 py-10 rounded-xl h-fit flex flex-col gap-10">
-      <h1 className="text-4xl text-white font-semibold">Update your profile</h1>
-      <fieldset className="flex items-center gap-20">
+  return <main className="flex justify-center">
+    <form onSubmit={handleSubmit} className="
+      w-fit h-fit flex flex-col gap-6 mt-12
+      md:bg-neutral-900 md:border-2 md:border-neutral-800 md:py-10 md:px-20 md:rounded-xl
+    ">
+      <h1 className="text-4xl text-white font-semibold mb-4">Update your profile</h1>
+      <fieldset className="
+        flex flex-col items-center gap-6
+      ">
         <legend className="sr-only">User details</legend>
-        <label htmlFor="file" tabIndex={0} aria-label="Change profile photo" className="hover:brightness-50 transition-all cursor-pointer">
-          <img src={preview ?? session?.user?.image ?? "/unknown-user.webp"} alt={`${session?.user?.username}'s profile photo`} className="rounded-full w-60 aspect-square" />
+        <label htmlFor="file" tabIndex={0} aria-label="Change profile photo" className="rounded-full w-60 aspect-square overflow-hidden hover:brightness-50 transition-all cursor-pointer">
+          <img src={preview ?? session?.user?.image ?? "/unknown-user.webp"} alt={`${session?.user?.username}'s profile photo`} className="object-cover w-full h-full" />
         </label>
-        <div className="flex flex-col">
-          <input id="file" type="file" name="file" accept="image/*" onChange={handleImageChange} className="hidden" />
+        <input id="file" type="file" name="image" onChange={handleImageChange} className="hidden" />
+        <div className="flex flex-col w-full">
           <label htmlFor="name" className="text-white text-lg font-semibold">Name</label>
           <input name="name" id="name" type="text" placeholder="Your name" className="h-14 text-white border-2 border-neutral-700 rounded-md px-6 font-semibold mb-4 mt-1" defaultValue={session?.user?.name} />
           <label htmlFor="username" className="text-white text-lg font-semibold">Username</label>

@@ -28,10 +28,23 @@ export default function LinksClient({ links }){
 }
 
 function Link({ id, name, url, deleteLinkLocally }){
-  return <li className="bg-neutral-900 border-2 border-neutral-800 px-10 h-20 rounded-xl flex items-center relative group">
+  return <li className="
+    bg-neutral-900 border-2 border-neutral-800 px-4 min-h-20 py-2 box-border rounded-xl flex justify-between items-center gap-1 group
+    sm:px-10
+    md:gap-4
+    lg:px-12 
+  ">
     <a href={url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-5 group/link hover:opacity-60 transition-opacity">
-      <LinkSVG />
-      <span className="text-white font-semibold text-lg group-hover/link:underline">{name}</span>
+      <LinkSVG className="
+        w-6 shrink-0
+        md:w-8 md:h-8
+      "/>
+      <span className="
+        text-white font-semibold text-sm group-hover/link:underline
+        xs:text-sm
+        sm:text-base
+        md:text-lg
+      ">{name}</span>
     </a>
     <DeleteButton id={id} deleteLinkLocally={()=> deleteLinkLocally(id)} />
   </li>;
