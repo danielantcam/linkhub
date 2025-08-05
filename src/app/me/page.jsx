@@ -7,7 +7,8 @@ import { useRouter } from "next/navigation";
 
 export default function Me(){
   const { data: session } = useSession();
-  const [preview, setPreview] = useState();
+  const [preview, setPreview] = useState(null);
+  const [ error, setError ] = useState("");
   const router = useRouter();
 
   async function uploadImage() {
@@ -31,9 +32,14 @@ export default function Me(){
   }
 
   async function updateData(data){
-    if(data.name === session?.user?.name && data.username === session?.user?.username) return;
+    if(data.name === session?.user?.name && data.username === session?.user?.username) return;  // Nothing changed
     const name = data.get("name");
     const username = data.get("username");
+
+    if(!name || !username) return { error: "Name or username missing." };
+
+    if(!/^(?!.*[.]{2})[a-zA-Z](?:[a-zA-Z0-9._-]{3,22}[a-zA-Z0-9_-])?$/.test(username)) return { error: "Username not valid." }; // Invalid username
+
     try{
       const { data } = await fetch("/api/user/update", {
         method: "PUT",
@@ -61,7 +67,11 @@ export default function Me(){
     event.preventDefault();
     await uploadImage();
     const data = new FormData(event.target);
-    await updateData(data);
+    const result = await updateData(data);
+    if(result?.error){
+      setError(result.error);
+      return;
+    }
     const updatedSession = await getSession({ triggerEvent: true });
     router.push(`/@${updatedSession?.user?.username}`);
   }
@@ -79,12 +89,13 @@ export default function Me(){
         <label htmlFor="file" tabIndex={0} aria-label="Change profile photo" className="rounded-full w-60 aspect-square overflow-hidden hover:brightness-50 transition-all cursor-pointer">
           <img src={preview ?? session?.user?.image ?? "/unknown-user.webp"} alt={`${session?.user?.username}'s profile photo`} className="object-cover w-full h-full" />
         </label>
-        <input id="file" type="file" name="image" onChange={handleImageChange} className="hidden" />
+        <input id="file" type="file" accept="image/*" name="image" onChange={handleImageChange} className="hidden" />
         <div className="flex flex-col w-full">
           <label htmlFor="name" className="text-white text-lg font-semibold">Name</label>
-          <input name="name" id="name" type="text" placeholder="Your name" className="h-14 text-white border-2 border-neutral-700 rounded-md px-6 font-semibold mb-4 mt-1" defaultValue={session?.user?.name} />
+          <input name="name" id="name" type="text" minLength={1} maxLength={45} placeholder="Jonh Dou" className="h-14 text-white border-2 border-neutral-700 rounded-md px-6 font-semibold mb-4 mt-1" defaultValue={session?.user?.name} />
           <label htmlFor="username" className="text-white text-lg font-semibold">Username</label>
-          <input name="username" id="username" type="text" placeholder="@username" className="h-14 text-white border-2 border-neutral-700 rounded-md px-6 font-semibold mb-4 mt-1" defaultValue={session?.user?.username} />
+          <input name="username" id="username" type="text" minLength={3} maxLength={22} placeholder="@username" className="h-14 text-white border-2 border-neutral-700 rounded-md px-6 font-semibold mb-2 mt-1" defaultValue={session?.user?.username} />
+          <span className="font-semibold text-red-500">{error}</span>
         </div>
       </fieldset>
       <div className="flex justify-between">
