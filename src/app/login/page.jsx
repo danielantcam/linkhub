@@ -12,7 +12,7 @@ export default function Login(){
   const router = useRouter();
 
   useEffect(() => {
-    if(status === "loading") return null;
+    if(status === "loading") return;
     if (status === "authenticated") {
       router.push(`/@${session?.user?.username}`);
     }
