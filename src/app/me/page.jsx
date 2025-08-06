@@ -1,15 +1,22 @@
 "use client"
 
 import { useState } from "react";
+import { useEffect } from "react";
 import { getSession, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function Me(){
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const [preview, setPreview] = useState(null);
   const [ error, setError ] = useState("");
   const router = useRouter();
+  
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push(`/login`);
+    }
+  }, [status, router]);
 
   async function uploadImage() {
     const file = document.querySelector("#file").files[0];
@@ -23,9 +30,6 @@ export default function Me(){
         method: "POST",
         body: formData,
       });
-
-      const data = await res.json();
-      setPfp(data.url);
     }catch{
       console.error("Error when uploading image");
     }

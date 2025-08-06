@@ -29,5 +29,8 @@ export async function generateMetadata({ params }) {
   return {
     title: `@${username} - LinkHUB`,
     description: `Visit @${username}'s profile on LinkHUB.`,
+    alternates: {
+      canonical: `https://linkhub.danielantcam.dev/@${username}`,
+    }
   };
 }

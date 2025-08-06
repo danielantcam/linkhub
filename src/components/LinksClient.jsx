@@ -29,7 +29,7 @@ export default function LinksClient({ links }){
 
 function Link({ id, name, url, deleteLinkLocally }){
   return <li className="
-    bg-neutral-900 border-2 border-neutral-800 px-4 min-h-20 py-2 box-border rounded-xl flex justify-between items-center gap-1 group
+    bg-neutral-900 border-2 border-neutral-800 px-4 min-h-20 py-2 box-border rounded-xl flex justify-between items-center gap-2 group
     sm:px-10
     md:gap-4
     lg:px-12 

@@ -2,14 +2,15 @@ import EditProfile from "./EditProfile";
 
 export default function ProfileCard({ user }){
   return <header className="
-    bg-neutral-900 border-2 border-neutral-800 p-8 rounded-xl h-fit
+    bg-neutral-900 border-2 border-neutral-800 p-8 rounded-xl h-fit w-full
+    md:w-fit
     xl:p-10
   ">
     <section aria-labelledby="profile-heading" className="
       flex flex-col items-center gap-4
       xs:flex-row xs:gap-8
       md:gap-16 md:justify-center
-      lg:flex-col lg:gap-6 lg:items-start
+      lg:flex-col lg:gap-6 lg:items-center
     ">
       <div className="
         rounded-full w-60 aspect-square overflow-hidden
@@ -22,7 +23,7 @@ export default function ProfileCard({ user }){
         "/>
       </div>
       <div className="
-        w-full
+        min-w-full
         sm:w-fit
       ">
         <h1 className="

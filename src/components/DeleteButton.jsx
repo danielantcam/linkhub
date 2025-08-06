@@ -19,7 +19,7 @@ export default function DeleteButton({ id, deleteLinkLocally }){
 
   return <>{
     isMine && 
-    <button onClick={deleteLink} className="flex items-center justify-center bg-neutral-900 border-2 border-neutral-800 aspect-square p-2 rounded-full cursor-pointer hover:border-red-500 hover:bg-red-500 transition-colors">
+    <button onClick={deleteLink} aria-label="Delete link" className="flex items-center justify-center bg-neutral-900 border-2 border-neutral-800 aspect-square p-2 rounded-full cursor-pointer hover:border-red-500 hover:bg-red-500 transition-colors">
       <Trash className="w-6 h-6"/>
     </button>
   }</>;

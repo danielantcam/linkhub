@@ -12,6 +12,7 @@ export default function Login(){
   const router = useRouter();
 
   useEffect(() => {
+    if(status === "loading") return null;
     if (status === "authenticated") {
       router.push(`/@${session?.user?.username}`);
     }
@@ -33,7 +34,7 @@ export default function Login(){
         </button>
       </section>
 
-      <div className="flex items-center gap-2 text-white my-6">
+      {/*<div className="flex items-center gap-2 text-white my-6">
         <hr className="grow border-white" />
         <span className="font-semibold">or log in with an email</span>
         <hr className="grow border-white" />
@@ -42,7 +43,7 @@ export default function Login(){
       <form className="flex flex-col gap-2">
         <input type="email" placeholder="Email" className="h-14 text-white border-2 border-neutral-700 rounded-md px-6 font-semibold" />
         <button className="h-14 bg-neutral-200 font-bold text-lg text-neutral-800 rounded-md cursor-pointer hover:bg-neutral-900 hover:border-2 hover:border-neutral-700 hover:text-white transition-colors">Login</button>
-      </form>
+      </form>*/}
     </main>
   </div>;  
 }
