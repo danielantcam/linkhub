@@ -31,7 +31,8 @@ function CreateLink({ links, setLinks, createLinkRef }){
       body: JSON.stringify({
         title,
         url
-      })
+      }),
+        credentials: "include"
     });
 
     if(res.ok){

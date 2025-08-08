@@ -29,6 +29,7 @@ export default function Me(){
       const res = await fetch("/api/user/upload-pfp", {
         method: "POST",
         body: formData,
+        credentials: "include"
       });
     }catch{
       console.error("Error when uploading image");
