@@ -23,7 +23,7 @@ function CreateLink({ links, setLinks, createLinkRef }){
     const data = new FormData(event.target);
     const title = data.get("title");
     const url = data.get("url");
-    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/links", {
+    const res = await fetch("/api/links", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
