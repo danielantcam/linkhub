@@ -11,7 +11,7 @@ cloudinary.config({
 
 export async function POST(req) {
   try {
-    const token = await getToken({ req, secret: process.env.AUTH_SECRET });
+    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
     
     if(!token || !token.id){
       return new Response(JSON.stringify({ error: "Unauthorized" }), {

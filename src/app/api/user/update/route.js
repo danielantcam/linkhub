@@ -3,9 +3,10 @@ import { getToken } from "next-auth/jwt";
 
 export async function PUT(req){
   try{
-    const token = await getToken({ req, secret: process.env.AUTH_SECRET });
+    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
         
     if(!token || !token.id){
+      console.log(token);
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
         status: 401,
         headers: { "Content-Type": "application/json" },
