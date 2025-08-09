@@ -3,7 +3,12 @@ import { getToken } from "next-auth/jwt";
 
 export async function POST(req){
   try{
-    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+    const token = await getToken({ req,
+      secret: process.env.NEXTAUTH_SECRET,
+      cookieName: process.env.NODE_ENV === 'production'
+        ? "__Secure-authjs.session-token"
+        : undefined
+    });
 
     if(!token || !token.id){
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
@@ -40,7 +45,12 @@ export async function POST(req){
 
 export async function DELETE(req){
   try{
-    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+    const token = await getToken({ req,
+      secret: process.env.NEXTAUTH_SECRET,
+      cookieName: process.env.NODE_ENV === 'production'
+        ? "__Secure-authjs.session-token"
+        : undefined
+    });
 
     if(!token || !token.id){
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
