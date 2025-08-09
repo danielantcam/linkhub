@@ -12,6 +12,7 @@ function generateUsername(base = "user") {
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
+  useSecureCookies: true,
   providers: [
     GitHub({
       clientId: process.env.GITHUB_ID,
