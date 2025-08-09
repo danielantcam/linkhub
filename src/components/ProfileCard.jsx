@@ -18,7 +18,7 @@ export default function ProfileCard({ user }){
         md:w-60
         3xl:w-70
       ">
-        <img src={user.image ?? "/unknown-user.webp"} alt={`${user.name}'s profile photo`} className="
+        <img src={user?.image ?? "/unknown-user.webp"} alt={`${user?.name ?? "User"}'s profile photo`} className="
           object-cover w-full h-full
         "/>
       </div>
