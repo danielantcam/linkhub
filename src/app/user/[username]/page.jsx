@@ -6,9 +6,7 @@ export default async function Profile({ params }){
   const { username } = await params;
 
   const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/user/" + username);
-  const data = await response.json();
-
-  const user = { username, ...data };
+  const user = await response.json();
 
   return (<>
     <Navbar/>
@@ -26,9 +24,19 @@ export default async function Profile({ params }){
 
 export async function generateMetadata({ params }) {
   const { username } = await params;
+
+  const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/user/" + username);
+  const user = await response.json();
+
   return {
-    title: `@${username} - LinkHUB`,
-    description: `Visit @${username}'s profile on LinkHUB.`,
+    title: `@${user.name} (${username}) - LinkHUB`,
+    description: `Visit @${user.name}'s (${username}) profile on LinkHUB.`,
+    openGraph: {
+      images: [{ url: user.image }]
+    },
+    twitter: {
+      images: [ user.image ]
+    },
     alternates: {
       canonical: `https://linkhub.danielantcam.dev/@${username}`,
     }
