@@ -10,7 +10,7 @@ export async function GET(req, { params }){
     );
     const dbUser = res.rows[0];
 
-    if(dbUser) return Response.json(dbUser);
+    if(dbUser) return Response.json({ ...dbUser, username });
 
     return new Response(JSON.stringify({ message: "User not found." }), {
       status: 404,
