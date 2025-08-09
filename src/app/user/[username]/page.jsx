@@ -29,8 +29,8 @@ export async function generateMetadata({ params }) {
   const user = await response.json();
 
   return {
-    title: `@${user.name} (${username}) - LinkHUB`,
-    description: `Visit @${user.name}'s (${username}) profile on LinkHUB.`,
+    title: `${user.name} (@${username}) - LinkHUB`,
+    description: `Visit ${user.name}'s (@${username}) profile on LinkHUB.`,
     openGraph: {
       images: [{ url: user.image }]
     },
