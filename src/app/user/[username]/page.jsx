@@ -2,14 +2,8 @@ import Navbar from "components/Navbar";
 import ProfileCard from "components/ProfileCard";
 import Links from "components/Links";
 
-async function wait(){
-  return new Promise((resolve) => setTimeout(resolve, 5000));
-}
-
 export default async function Profile({ params }){
   const { username } = await params;
-
-  await wait();
 
   const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/user/" + username);
   const user = await response.json();
