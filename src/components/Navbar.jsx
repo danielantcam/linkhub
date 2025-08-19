@@ -8,7 +8,24 @@ import Person from "svg/Person";
 export default function Navbar(){
   const { data: session, status } = useSession();
 
-  if (status === "loading") return null;
+  if (status === "loading"){
+    return (
+      <header className="
+        w-full flex justify-between items-center pt-8
+        lg:pt-10
+      ">
+        <Link href="/" className="text-white text-3xl font-semibold">LinkHUB</Link>
+
+        {/* Nav skeleton */}
+        <nav className="flex items-center gap-3">
+          {/* Fake avatar */}
+          <div className="w-8 h-8 rounded-full bg-neutral-800 animate-pulse"></div>
+          {/* Fake text */}
+          <div className="w-20 h-5 rounded-md bg-neutral-800 animate-pulse"></div>
+        </nav>
+      </header>
+    );
+  }
 
   return <header className="
     w-full flex justify-between items-center pt-8
