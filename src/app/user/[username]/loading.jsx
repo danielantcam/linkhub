@@ -10,26 +10,26 @@ export default function Fallback(){
       lg:flex-row
     ">
       <div className="
-        h-80 bg-neutral-800 rounded-lg animate-pulse
-        lg:w-80
+        h-80 bg-neutral-800 rounded-xl animate-pulse
+        lg:w-80 lg:h-100
       ">
         {/* profile card */}
       </div>
 
       <div className="grow flex flex-col gap-4">
-        <div className="bg-neutral-800 h-20 rounded-lg animate-pulse">
+        <div className="bg-neutral-800 h-20 rounded-xl animate-pulse">
           {/* link */}
         </div>
 
-        <div className="bg-neutral-800 h-20 rounded-lg animate-pulse">
+        <div className="bg-neutral-800 h-20 rounded-xl animate-pulse">
           {/* link */}
         </div>
 
-        <div className="bg-neutral-800 h-20 rounded-lg animate-pulse">
+        <div className="bg-neutral-800 h-20 rounded-xl animate-pulse">
           {/* link */}
         </div>
 
-        <div className="bg-neutral-800 h-20 rounded-lg animate-pulse">
+        <div className="bg-neutral-800 h-20 rounded-xl animate-pulse">
           {/* link */}
         </div>
       </div>
