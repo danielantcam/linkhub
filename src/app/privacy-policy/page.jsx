@@ -56,7 +56,7 @@ export default function PrivacyPolicy() {
           <li>
             <h2 className="text-xl font-semibold mb-2">6. Contact</h2>
             <p>
-              For any questions about this policy or the project itself, you can reach out via <a href="mailto:danielanton@danielantcam.dev" className="underline text-blue-400 hover:text-blue-300">danielanton@danielantcam.dev</a>.
+              For any questions about this policy or the project itself, you can reach out via <a href="mailto:hello@danielantcam.dev" className="underline text-blue-400 hover:text-blue-300">hello@danielantcam.dev</a>.
             </p>
           </li>
         </ol>
